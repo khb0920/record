@@ -1,3 +1,5 @@
+
+
 const id = document.querySelector("#id"),
     pw = document.querySelector("#pw"),
     loginBtn = document.querySelector("#button");
@@ -13,16 +15,18 @@ function login(){
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(req)
+        body: JSON.stringify(req),
+        credentials : "include",
     })
     .then((res) => res.json())
     .then((res) => {
-        if(res.success){
+        if(res.response.success){
+            localStorage.setItem('accessToken', res.token);
             location.href = "/";
-            localStorage.setItem('access-token', res.access_token);
         }else {
-            alert(res.msg);
+            alert(res.response.msg); 
         }
+       //console.log(res.token);
     })
     .catch((err) => {
         console.log("로그인 중 에러 발생");
