@@ -7,10 +7,8 @@ exports.isLoggedIn = (req, res, next) => {
         //console.log(req.decoded);
     } catch (error) {
         if(error.name === "TokenExpiredError"){
-            return res.status(419).json({
-                code: 419,  
-                msg: "토큰이 만료되었습니다.",
-              });
+            req.decoded = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_SECRET);  
+            next();
         }
         if (error.name === "JsonWebTokenError") {
             res.send(

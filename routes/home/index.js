@@ -21,11 +21,12 @@ const router = express.Router();
 router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
-router.get("/usertest", isLoggedIn, ctrl.output.test);
-router.get("/user", isLoggedIn, ctrl.ps.user);
+router.get("/mypage", isLoggedIn, ctrl.output.mypage);
+router.get("/user",isLoggedIn, ctrl.ps.user);
 
 router.post("/login", ctrl.ps.login);
 router.post("/register", upload.single("img"), ctrl.ps.register);
+router.post("/logout", isLoggedIn, ctrl.ps.logout);
 
 
 module.exports = router;

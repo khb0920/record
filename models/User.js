@@ -8,9 +8,8 @@ class User {
         const client = this.body; //바디에 아이디값 
         try {
         const dbUser = await UserStorage.getUserInfo(client.id); // 해당하는 정보를 반환  
-    
         if (dbUser) {
-            if (dbUser.userId === client.id && dbUser.userPw === client.pw) {
+            if (dbUser.userId === client.id && client.hashpsword.indexOf(dbUser.userPw) != -1) {
                  return { success: true,
                           data : dbUser
                           };

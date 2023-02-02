@@ -1,14 +1,14 @@
 
 
 const id = document.querySelector("#id"),
-    pw = document.querySelector("#pw"),
+    psword = document.querySelector("#pw"),
     loginBtn = document.querySelector("#button");
 
 loginBtn.addEventListener("click", login);
 function login(){
     const req = {
         id : id.value,
-        pw : pw.value,
+        psword : psword.value,
     };
     fetch("/login", {
         method : "POST",
@@ -21,12 +21,13 @@ function login(){
     .then((res) => res.json())
     .then((res) => {
         if(res.response.success){
-            localStorage.setItem('accessToken', res.token);
+            localStorage.setItem('accessToken', res.atoken);
+            localStorage.setItem('refreshToken', res.rtoken);
             location.href = "/";
         }else {
             alert(res.response.msg); 
         }
-       //console.log(res.token);
+       
     })
     .catch((err) => {
         console.log("로그인 중 에러 발생");

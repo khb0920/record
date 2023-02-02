@@ -1,6 +1,8 @@
 const User = require("../../models/User");
 const jwt = require('jsonwebtoken');
 const UserStorage = require("../../models/UserStorage");
+const express = require('express');
+const crypto = require('crypto');
 
 
 const output = {
@@ -15,40 +17,57 @@ const output = {
     register : (req, res) => {
         res.render("register.html");
     },
-    test : async(req, res) => {
-        res.render("usertest.html");
+    mypage : async(req, res) => {
+        res.render("mypage.html");
     },
 };
 
 const ps = {
     login : async (req, res) => {
-        const user = new User(req.body);
+        
+        const id = req.body.id;
+        const hashpsword = crypto.createHash('sha512')
+                .update(req.body.psword)
+                .digest('base64');
+        const user = new User({id, hashpsword});
         const userData = await user.login();
-        //console.log(req.body.id);
+        
         if(userData.success===true){
-            const TokenSuccess = jwt.sign({
+            const accessToken = jwt.sign({
                 id : req.body.id,
             }, process.env.ACCESS_SECRET, {
-                expiresIn : '30m'
+                expiresIn : '1m'
             })
-            res.cookie("accessToken", TokenSuccess, {
+
+            const refreshToken = jwt.sign({
+                id : req.body.id,
+            }, process.env.REFRESH_SECRET, {
+                expiresIn : '24h'
+            })
+
+            res.cookie("accessToken", accessToken, {
+                secure : false,
+                httpOnly : true,
+            })
+
+            res.cookie("refreshToken", refreshToken, {
                 secure : false,
                 httpOnly : true,
             })
             
-            // res.cookie(user, TokenSuccess);
-            // res.json(TokenSuccess);
-            //console.log(userData);
-            return res.json({ response : userData, token :TokenSuccess});
+            return res.json({ response : userData, atoken :accessToken, rtoken : refreshToken});
         }else{
             return res.json({ response : userData});
-            //console.log(userData);
+
         }
     },
 
     register : async (req, res) => {
         const image = "/image/" + req.file.filename;
-        const userInfo = [req.body.id ,req.body.psword, req.body.name, req.body.age, req.body.position, image];
+        const hashpsword = crypto.createHash('sha512')
+                .update(req.body.psword)
+                .digest('base64');
+        const userInfo = [req.body.id ,hashpsword, req.body.name, req.body.age, req.body.position, image];
         const user = new User(userInfo);
         const response = await user.register();
         return res.json(response);
@@ -57,6 +76,22 @@ const ps = {
     user : async (req, res) => {
         const userData = await UserStorage.getUserInfo(req.decoded.id);
         return res.json(userData);
+    },
+    
+    logout : async (req, res) => {
+        const accessToken = req.cookies['accessToken'];
+        if(accessToken){
+            res.clearCookie("accessToken", {
+                secure : false,
+                httpOnly : true,
+            });
+
+            res.clearCookie("refreshToken", {
+                secure : false,
+                httpOnly : true,
+            });
+            return res.json({success : true, msg :"로그아웃 되었습니다."});
+        }
     }
 
 }

@@ -4,19 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/js/login.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script src="/js/login.js" defer></script> 
     <title>Document</title>
 </head>
 <body>
     <div class="login-page">
-        <div class="form">
-            <form class="login-form">
-                <input id="id" type="text" placeholder="아이디">
-                <input id="pw" type="password" placeholder="비밀번호">
-                <p id="button">로그인</p>
-                <a href="/register">회원가입 하러가기</a>
-            </form>
-        </div>
-    </div>
+        <h2>Login</h2>
+        <form>
+          <div class="login-form">
+            <input id="id" type="text" placeholder="아이디">
+            <label>Username</label>
+          </div>
+          <div class="login-form">
+            <input id="pw" type="password" placeholder="비밀번호">
+            <label>Password</label>
+          </div>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <p id="button">로그인</p>
+            <a href="/register">회원가입 하러가기</a>
+          </a>
+        </form>
+      </div>
 </body>
 </html>
