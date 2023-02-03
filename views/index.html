@@ -4,6 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="/css/image.css">
 	<script src="/js/index.js" defer></script>
 	<title>Document</title>
 </head>
@@ -13,7 +14,108 @@
 	<a href="/login" id="login">로그인</a>
 	<a href="/register">회원가입하기</a>	
 	<a href="/mypage" id="mypage">마이페이지</a>
+	<a href="/recordPage" id="recordPage">기록실</a>
 	<button id="logoutBtn">로그아웃</button>
 	</div>
+</br>
+</br>
+</br>
+	<h1 class="h1">이달의 득점왕</h1>
+
+	<ul class="slides">
+		<input type="radio" name="radio-btn" id="img-1" checked />
+		<li class="slide-container">
+			<div class="slide">
+				<img id="img1"/>
+				<text id ="1st"></text>
+			</div>
+			<div class="nav">
+				<label for="img-3" class="prev">&#x2039;</label>
+				<label for="img-2" class="next">&#x203a;</label>
+			</div>
+		</li>
+	
+		<input type="radio" name="radio-btn" id="img-2" />
+		<li class="slide-container">
+			<div class="slide">
+				<img id="img2"/>
+				<text id ="2nd"></text>
+			</div>
+			<div class="nav">
+				<label for="img-1" class="prev">&#x2039;</label>
+				<label for="img-3" class="next">&#x203a;</label>
+			</div>
+		</li>
+	
+		<input type="radio" name="radio-btn" id="img-3" />
+		<li class="slide-container">
+			<div class="slide">
+				<img id="img3"/>
+				<text id ="3rd"></text>
+			</div>
+			<div class="nav">
+				<label for="img-2" class="prev">&#x2039;</label>
+				<label for="img-1" class="next">&#x203a;</label>
+			</div>
+		</li>
+	
+	
+		<li class="nav-dots">
+		  <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+		  <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+		  <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+		</li>
+	</ul>
+</br>
+</br>
+</br>
+</br>
+<!--  --------------------------------------------------------------------------------------- -->
+	<h1 class="h1">이달의 도움왕</h1>
+
+	<ul class="slides2">
+		<input type="radio2" name="radio-btn2" id="img-12" checked />
+		<li class="slide-container2">
+			<div class="slide2">
+				<img id="asimg1"/>
+				<text id ="as1st"></text>
+			</div>
+			<div class="nav2">
+				<label for="img-32" class="prev2">&#x2039;</label>
+				<label for="img-22" class="next2">&#x203a;</label>
+			</div>
+		</li>
+	
+		<input type="radio2" name="radio-btn2" id="img-22" />
+		<li class="slide-container2">
+			<div class="slide2">
+				<img id="asimg2"/>
+				<text id ="as2nd"></text>
+			</div>
+			<div class="nav2">
+				<label for="img-12" class="prev2">&#x2039;</label>
+				<label for="img-32" class="next2">&#x203a;</label>
+			</div>
+		</li>
+	
+		<input type="radio2" name="radio-btn2" id="img-32" />
+		<li class="slide-container2">
+			<div class="slide2">
+				<img id="asimg3"/>
+				<text id ="as3rd"></text>
+			</div>
+			<div class="nav2">
+				<label for="img-22" class="prev2">&#x2039;</label>
+				<label for="img-12" class="next2">&#x203a;</label>
+			</div>
+		</li>
+	
+	
+		<li class="nav-dots2">
+		  <label for="img-12" class="nav-dot2" id="img-dot-12"></label>
+		  <label for="img-22" class="nav-dot2" id="img-dot-22"></label>
+		  <label for="img-32" class="nav-dot2" id="img-dot-32"></label>
+		</li>
+	</ul>
 </body>
 </html>

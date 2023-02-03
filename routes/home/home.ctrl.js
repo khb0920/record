@@ -1,6 +1,8 @@
 const User = require("../../models/User");
 const jwt = require('jsonwebtoken');
 const UserStorage = require("../../models/UserStorage");
+const RecordGoalStorage = require("../../models/RecordGoalStorage");
+const RecordAssistStorage = require("../../models/RecordAssistStorage");
 const express = require('express');
 const crypto = require('crypto');
 
@@ -19,6 +21,9 @@ const output = {
     },
     mypage : async(req, res) => {
         res.render("mypage.html");
+    },
+    recordPage : async(req, res) => {
+        res.render("recordPage.html");
     },
 };
 
@@ -92,6 +97,18 @@ const ps = {
             });
             return res.json({success : true, msg :"로그아웃 되었습니다."});
         }
+    },
+
+    recordGoal : async (req, res) => {
+        const recordGoalData = await RecordGoalStorage.getRecordGoalInfo();
+        //console.log(recordData);
+        return res.json(recordGoalData);
+    },
+
+    recordAssist : async (req, res) => {
+        const recordAssistData = await RecordAssistStorage.getRecordAssistInfo();
+        //console.log(recordAssistData);
+        return res.json(recordAssistData);
     }
 
 }
