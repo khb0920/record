@@ -28,6 +28,16 @@ class UserStorage {
         });
         
     }
+
+    static getAllUserInfo() {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT * FROM user ORDER BY userNum DESC;";
+        db.query(query, (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data);
+        });
+        });
+    }
 }
 
 

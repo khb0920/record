@@ -22,10 +22,19 @@ router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/mypage", isLoggedIn, ctrl.output.mypage);
-router.get("/user",isLoggedIn, ctrl.ps.user);
+router.get("/recordPage", isLoggedIn, ctrl.output.recordPage);
+
+router.get("/user", ctrl.ps.user);
+router.get("/user/me",isLoggedIn, ctrl.ps.userme);
+router.get("/record",isLoggedIn, ctrl.ps.record);
 router.get("/record/goal", ctrl.ps.recordGoal);
 router.get("/record/assist", ctrl.ps.recordAssist);
-router.get("/recordPage", isLoggedIn, ctrl.output.recordPage);
+router.get("/record/mvp", ctrl.ps.recordMvp);
+router.get("/record/save", ctrl.ps.recordSave);
+router.get("/match", ctrl.ps.match);
+router.get("/match/last", ctrl.ps.lastmatch);
+router.get("/match/week", ctrl.ps.weekMatch);
+
 
 router.post("/login", ctrl.ps.login);
 router.post("/register", upload.single("img"), ctrl.ps.register);

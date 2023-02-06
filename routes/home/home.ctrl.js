@@ -1,8 +1,8 @@
 const User = require("../../models/User");
 const jwt = require('jsonwebtoken');
 const UserStorage = require("../../models/UserStorage");
-const RecordGoalStorage = require("../../models/RecordGoalStorage");
-const RecordAssistStorage = require("../../models/RecordAssistStorage");
+const RecordStorage = require("../../models/RecordStorage");
+const MatchStorage = require("../../models/MatchStorage");
 const express = require('express');
 const crypto = require('crypto');
 
@@ -77,8 +77,13 @@ const ps = {
         const response = await user.register();
         return res.json(response);
     },
-
+    
     user : async (req, res) => {
+        const userData = await UserStorage.getAllUserInfo();
+        return res.json(userData);
+    },
+
+    userme : async (req, res) => {
         const userData = await UserStorage.getUserInfo(req.decoded.id);
         return res.json(userData);
     },
@@ -98,18 +103,46 @@ const ps = {
             return res.json({success : true, msg :"로그아웃 되었습니다."});
         }
     },
+    
+    record : async (req, res) => {
+        const recordData = await RecordStorage.getRecord();
+        //return res.json(recordData);
+    },
 
     recordGoal : async (req, res) => {
-        const recordGoalData = await RecordGoalStorage.getRecordGoalInfo();
-        //console.log(recordData);
-        return res.json(recordGoalData);
+        const goalData = await RecordStorage.getGoalInfo();
+        return res.json(goalData);
     },
 
     recordAssist : async (req, res) => {
-        const recordAssistData = await RecordAssistStorage.getRecordAssistInfo();
-        //console.log(recordAssistData);
-        return res.json(recordAssistData);
-    }
+        const assistData = await RecordStorage.getAssistInfo();
+        return res.json(assistData);
+    },
+
+    recordMvp : async (req, res) => {
+        const mvpData = await RecordStorage.getMvpInfo();
+        return res.json(mvpData);
+    },
+
+    recordSave : async (req, res) => {
+        const saveData = await RecordStorage.getSaveInfo();
+        return res.json(saveData);
+    },
+
+    match : async (req, res) => {
+        const matchData = await MatchStorage.getMatchInfo();
+        //return res.json(matchData);
+    },
+
+    lastmatch : async (req, res) => {
+        const matchData = await MatchStorage.getlastMatchInfo();
+        return res.json(matchData);
+    },
+
+    weekMatch : async (req, res) => {
+        const matchData = await MatchStorage.getweekMatchInfo();
+        return res.json(matchData[0]);
+    },
 
 }
 
