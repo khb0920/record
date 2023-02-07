@@ -5,6 +5,7 @@ const userLogin = localStorage.getItem("accessToken");
 
 if(userLogin){
     document.getElementById("login").style.display="none";
+    document.getElementById("register").style.display="none";
 }else{
     document.getElementById("logoutBtn").style.display="none";
     document.getElementById("mypage").style.display="none";

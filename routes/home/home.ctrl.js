@@ -25,6 +25,12 @@ const output = {
     recordPage : async(req, res) => {
         res.render("recordPage.html");
     },
+    update : async(req, res) => {
+        res.render("update.html");
+    },
+    ranking : async(req, res) => {
+        res.render("ranking.html");
+    },
 };
 
 const ps = {
@@ -142,6 +148,11 @@ const ps = {
     weekMatch : async (req, res) => {
         const matchData = await MatchStorage.getweekMatchInfo();
         return res.json(matchData[0]);
+    },
+
+    update : async (req, res) => {
+        console.log(req.body);
+        console.log(req.decoded.id);
     },
 
 }

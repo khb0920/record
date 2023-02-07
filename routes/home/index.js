@@ -23,6 +23,8 @@ router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/mypage", isLoggedIn, ctrl.output.mypage);
 router.get("/recordPage", isLoggedIn, ctrl.output.recordPage);
+router.get("/update", isLoggedIn, ctrl.output.update);
+router.get("/ranking", isLoggedIn, ctrl.output.ranking);
 
 router.get("/user", ctrl.ps.user);
 router.get("/user/me",isLoggedIn, ctrl.ps.userme);
@@ -39,6 +41,8 @@ router.get("/match/week", ctrl.ps.weekMatch);
 router.post("/login", ctrl.ps.login);
 router.post("/register", upload.single("img"), ctrl.ps.register);
 router.post("/logout", isLoggedIn, ctrl.ps.logout);
+
+router.put("/update", isLoggedIn, ctrl.ps.update);
 
 
 module.exports = router;

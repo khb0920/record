@@ -4,7 +4,7 @@ exports.isLoggedIn = (req, res, next) => {
     try {
         req.decoded = jwt.verify(req.cookies.accessToken, process.env.ACCESS_SECRET);  
         next();
-        //console.log(req.decoded);
+        
     } catch (error) {
         if(error.name === "TokenExpiredError"){
             req.decoded = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_SECRET);  
