@@ -38,6 +38,18 @@ class UserStorage {
         });
         });
     }
+
+    static updateUser(userInfo) {
+        const userId = userInfo[0];
+        const userImg = userInfo[1];
+        return new Promise((resolve, reject) => {
+            const query = `update user set userImg = ? where userId = ?;`;
+        db.query(query,[userImg, userId], (err) => {
+            if (err) reject(`${err}`);
+            resolve({success : true });
+        });
+        });
+    }
 }
 
 

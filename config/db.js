@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 
 const db = mysql.createConnection({
+    multipleStatemens:true,
     host: "hddb.c0s9behzy0hl.ap-northeast-2.rds.amazonaws.com",
     user: "hb",
     password: "dhdltlfgdj1!",

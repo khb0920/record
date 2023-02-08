@@ -25,10 +25,12 @@ router.get("/mypage", isLoggedIn, ctrl.output.mypage);
 router.get("/recordPage", isLoggedIn, ctrl.output.recordPage);
 router.get("/update", isLoggedIn, ctrl.output.update);
 router.get("/ranking", isLoggedIn, ctrl.output.ranking);
+router.get("/matching", isLoggedIn, ctrl.output.matching);
 
 router.get("/user", ctrl.ps.user);
 router.get("/user/me",isLoggedIn, ctrl.ps.userme);
 router.get("/record",isLoggedIn, ctrl.ps.record);
+router.get("/record/me",isLoggedIn, ctrl.ps.myrecord);
 router.get("/record/goal", ctrl.ps.recordGoal);
 router.get("/record/assist", ctrl.ps.recordAssist);
 router.get("/record/mvp", ctrl.ps.recordMvp);
@@ -42,7 +44,7 @@ router.post("/login", ctrl.ps.login);
 router.post("/register", upload.single("img"), ctrl.ps.register);
 router.post("/logout", isLoggedIn, ctrl.ps.logout);
 
-router.put("/update", isLoggedIn, ctrl.ps.update);
+router.put("/update/img", upload.single("img"),isLoggedIn,  ctrl.ps.updateImg);
 
 
 module.exports = router;

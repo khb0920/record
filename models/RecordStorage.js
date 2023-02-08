@@ -1,15 +1,25 @@
 const db = require("../config/db");
 
 class RecordStorage {
-    // static getRecord() {
-    //     return new Promise((resolve, reject) => {
-    //         const query = "";
-    //     db.query(query, (err, data) => {
-    //         if (err) reject(`${err}`);
-    //         resolve(data);
-    //     });
-    //     });
-    // }
+    static getRecord() {
+        return new Promise((resolve, reject) => {
+        db.query(query, (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data);
+        });
+        });
+    
+    }
+    static getMyRecord(id) {
+        return new Promise((resolve, reject) => {
+            const query = "select * from record where userId = ?"
+        db.query(query, [id], (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data[0]);
+        });
+        });
+    
+    }
 
     static getGoalInfo() {
         return new Promise((resolve, reject) => {

@@ -31,6 +31,9 @@ const output = {
     ranking : async(req, res) => {
         res.render("ranking.html");
     },
+    matching : async(req, res) => {
+        res.render("matching.html");
+    },
 };
 
 const ps = {
@@ -111,8 +114,15 @@ const ps = {
     },
     
     record : async (req, res) => {
-        const recordData = await RecordStorage.getRecord();
-        //return res.json(recordData);
+        // const recordData = await RecordStorage.getRecord();
+        // return res.json(recordData);
+    },
+
+    myrecord : async (req, res) => {
+        const userData = await UserStorage.getUserInfo(req.decoded.id);
+        const user = userData.userNum
+        const recordData = await RecordStorage.getMyRecord(user);
+        return res.json(recordData);
     },
 
     recordGoal : async (req, res) => {
@@ -137,7 +147,8 @@ const ps = {
 
     match : async (req, res) => {
         const matchData = await MatchStorage.getMatchInfo();
-        //return res.json(matchData);
+        const matchCnt = matchData.length;
+        return res.json({matchData, matchCnt});
     },
 
     lastmatch : async (req, res) => {
@@ -150,9 +161,14 @@ const ps = {
         return res.json(matchData[0]);
     },
 
-    update : async (req, res) => {
-        console.log(req.body);
-        console.log(req.decoded.id);
+    updateImg : async (req, res) => {
+        const image = "/image/" + req.file.filename;
+        const userId = req.decoded.id;
+        const userInfo = [userId, image];
+        // console.log(userInfo);
+        const changed = await UserStorage.updateUser(userInfo);
+        return res.json(changed);
+        //console.log(changed);
     },
 
 }
