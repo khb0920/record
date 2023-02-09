@@ -124,7 +124,7 @@ const ps = {
         const recordData = await RecordStorage.getMyRecord(user);
         return res.json(recordData);
     },
-
+    
     recordGoal : async (req, res) => {
         const goalData = await RecordStorage.getGoalInfo();
         return res.json(goalData);
@@ -147,8 +147,7 @@ const ps = {
 
     match : async (req, res) => {
         const matchData = await MatchStorage.getMatchInfo();
-        const matchCnt = matchData.length;
-        return res.json({matchData, matchCnt});
+        return res.json(matchData);
     },
 
     lastmatch : async (req, res) => {
@@ -159,6 +158,11 @@ const ps = {
     weekMatch : async (req, res) => {
         const matchData = await MatchStorage.getweekMatchInfo();
         return res.json(matchData[0]);
+    },
+
+    monthMatch : async (req, res) => {
+        const matchData = await MatchStorage.getmonthMatchInfo(req.params.id);
+        return res.json(matchData);
     },
 
     updateImg : async (req, res) => {

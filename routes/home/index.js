@@ -38,6 +38,7 @@ router.get("/record/save", ctrl.ps.recordSave);
 router.get("/match", ctrl.ps.match);
 router.get("/match/last", ctrl.ps.lastmatch);
 router.get("/match/week", ctrl.ps.weekMatch);
+router.get("/match/month/:id", ctrl.ps.monthMatch);
 
 
 router.post("/login", ctrl.ps.login);

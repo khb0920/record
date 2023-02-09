@@ -30,6 +30,16 @@ class MatchStorage {
         });
         });
     }
+
+    static getmonthMatchInfo(id) {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT * FROM `match` where matchMonth = ?;";
+        db.query(query, [id], (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data);
+        });
+        });
+    }
 }
 
 module.exports = MatchStorage;
