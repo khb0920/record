@@ -3,6 +3,7 @@ const db = require("../config/db");
 class RecordStorage {
     static getRecord() {
         return new Promise((resolve, reject) => {
+            const query = "select * from record;"
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);
@@ -10,6 +11,17 @@ class RecordStorage {
         });
     
     }
+
+    static recordDetail(id) {
+        return new Promise((resolve, reject) => {
+            const query = `select * from record order by ${id} DESC;`
+        db.query(query, (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data);
+        });
+        });
+    }
+
     static getMyRecord(id) {
         return new Promise((resolve, reject) => {
             const query = "select * from record where userId = ?"
@@ -23,7 +35,7 @@ class RecordStorage {
 
     static getGoalInfo() {
         return new Promise((resolve, reject) => {
-            const query = "SELECT userName, userImg, userGoal FROM user, record where user.userNum = record.userId Order by record.userGoal DESC ;";
+            const query = "SELECT user.userName, user.userImg, record.userGoal FROM user, record where user.userNum = record.userId Order by record.userGoal DESC;";
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);
@@ -33,7 +45,7 @@ class RecordStorage {
 
     static getAssistInfo() {
         return new Promise((resolve, reject) => {
-            const query = "SELECT userName, userImg, userAssist FROM user, record where user.userNum = record.userId Order by record.userAssist DESC ;";
+            const query = "SELECT user.userName, user.userImg, record.userAssist FROM user, record where user.userNum = record.userId Order by record.userAssist DESC ;";
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);
@@ -43,7 +55,7 @@ class RecordStorage {
 
     static getMvpInfo() {
         return new Promise((resolve, reject) => {
-            const query = "SELECT userName, userImg, userMvp FROM user, record where user.userNum = record.userId Order by record.userMvp DESC ;";
+            const query = "SELECT user.userName, userImg, userMvp FROM user, record where user.userNum = record.userId Order by record.userMvp DESC ;";
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);
@@ -53,7 +65,7 @@ class RecordStorage {
 
     static getSaveInfo() {
         return new Promise((resolve, reject) => {
-            const query = "SELECT userName, userImg, userSave FROM user, record where user.userNum = record.userId Order by record.userSave DESC ;";
+            const query = "SELECT user.userName, userImg, userSave FROM user, record where user.userNum = record.userId Order by record.userSave DESC ;";
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);

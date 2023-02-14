@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 exports.isLoggedIn = (req, res, next) => {
     try {
-        req.decoded = jwt.verify(req.cookies.accessToken, process.env.ACCESS_SECRET);  
+        req.decoded = jwt.verify(req.cookies.accessToken, process.env.ACCESS_SECRET);   
         next();
         
     } catch (error) {

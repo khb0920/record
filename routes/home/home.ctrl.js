@@ -5,6 +5,7 @@ const RecordStorage = require("../../models/RecordStorage");
 const MatchStorage = require("../../models/MatchStorage");
 const express = require('express');
 const crypto = require('crypto');
+const BoardStorage = require("../../models/BoardStorage");
 
 
 const output = {
@@ -28,11 +29,17 @@ const output = {
     update : async(req, res) => {
         res.render("update.html");
     },
-    ranking : async(req, res) => {
-        res.render("ranking.html");
-    },
     matching : async(req, res) => {
         res.render("matching.html");
+    },
+    board : async(req, res) => {
+        res.render("board.html");
+    },
+    boardDetail : async(req, res) => {
+        res.render("boardDetail.html");
+    },
+    writing : async(req, res) => {
+        res.render("writing.html");
     },
 };
 
@@ -114,13 +121,21 @@ const ps = {
     },
     
     record : async (req, res) => {
-        // const recordData = await RecordStorage.getRecord();
-        // return res.json(recordData);
+        const recordData = await RecordStorage.getRecord();
+        return res.json(recordData);
+    },
+
+    recordDetail : async (req, res) => {
+        
+        const recordData = await RecordStorage.recordDetail(req.params.id);
+        //console.log(recordData);
+        return res.json(recordData);
     },
 
     myrecord : async (req, res) => {
         const userData = await UserStorage.getUserInfo(req.decoded.id);
         const user = userData.userNum
+     
         const recordData = await RecordStorage.getMyRecord(user);
         return res.json(recordData);
     },
@@ -152,7 +167,8 @@ const ps = {
 
     lastmatch : async (req, res) => {
         const matchData = await MatchStorage.getlastMatchInfo();
-        return res.json(matchData);
+        let last = matchData[matchData.length - 1];
+        return res.json(last);
     },
 
     weekMatch : async (req, res) => {
@@ -169,10 +185,26 @@ const ps = {
         const image = "/image/" + req.file.filename;
         const userId = req.decoded.id;
         const userInfo = [userId, image];
-        // console.log(userInfo);
         const changed = await UserStorage.updateUser(userInfo);
         return res.json(changed);
-        //console.log(changed);
+    },
+
+    board : async (req, res) => {
+        const boardData = await BoardStorage.getBoardInfo();
+       return res.json(boardData);
+    },
+
+    writing : async (req, res) => {
+        if(typeof req.file=="undefined"){
+            var image = null;
+        }else{
+            var image = "/image/" + req.file.filename;
+        }
+        const userId = req.decoded.id;
+        const boardInfo = [req.body.title,req.body.contents, image, userId];
+        const response = await BoardStorage.saveBoardInfo(boardInfo);
+        return res.json(response);
+        
     },
 
 }

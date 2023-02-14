@@ -2,7 +2,6 @@
 const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", logOut);
 const userLogin = localStorage.accessToken;
-console.log(userLogin);
 if(!userLogin){
     document.getElementById("login").style.display="";
     document.getElementById("register").style.display="";
@@ -39,7 +38,7 @@ function logOut() {
 fetch('/record/goal', {
     method : "GET",
     headers: {
-        "Content-Type": "application/json",    
+        "Content-Type": "application/json",  
     },
 })
 .then((res) => res.json())
@@ -52,7 +51,7 @@ fetch('/record/goal', {
     console.log(err);
 });
 
-fetch('/record/assist', {
+fetch("/record/assist", {
     method : "GET",
     headers: {
         "Content-Type": "application/json",    
@@ -111,7 +110,7 @@ fetch("/match/week", {
     var wmatch = data;
     document.getElementById("match1").innerHTML = `${wmatch.matchMonth} 월 ${wmatch.matchDay} 일 ${wmatch.matchPlace}  VS  ${wmatch.matchVs}`;
     function diffDay(){
-    const dday = document.querySelector("#dday");
+    const dday = document.querySelector("#dday");   
     const dtime = new Date(`${wmatch.matchYear}-${wmatch.matchMonth}-${wmatch.matchDay}`);
     const ttime = new Date();
     const diff = dtime - ttime;
@@ -138,7 +137,7 @@ fetch("/match/last", {
 })
 .then((res) => res.json())
 .then((data) => {
-    var lmatch1 = data[0];
+    var lmatch1 = data;
     document.getElementById("match2").innerHTML = `${lmatch1.matchMonth} 월 ${lmatch1.matchDay} 일 ${lmatch1.matchPlace}  VS  ${lmatch1.matchVs} ${lmatch1.matchScore} : ${lmatch1.matchLoss} ${lmatch1.matchResult}`
 })
 .catch((err) => {
