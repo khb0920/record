@@ -6,28 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<script src="/js/index.js" defer></script>
+	<script src="/js/includeHTML.js"></script>
 	<title>Document</title>
 </head>
 <body>
-	<div class="header-page">
-		<header>
-			<h2>FC</h2>
-			<nav>
-				<ul>
-					<li><a href="/matching">경기일정</a></li>
-					<li><a href="/recordPage">기록실</a></li>
-					<li><a href="/board" >자유게시판</a></li>	
-				</ul>
-			</nav>
-		</header>
+	<div class="header">
+	<div include-html="/header" ><script>includeHTML();</script></div>
+	<hr/>
 	</div>
-</br>
-<hr/>
-	<div class="login-page" style="margin-top: 50px;">
-		<button id="logoutBtn" style="float: right; margin-right: 30px; display: none;">로그아웃</button>
-		<a href="/register" id="register" style="float: right; margin-right: 30px; display: none;">회원가입</a>
-		<a href="/login" id="login" style="float: right; margin-right: 30px; display: none;">로그인</a>
-		<a href="/mypage" id="mypage"style="float: right; margin-right: 30px; display: none;">마이페이지</a>
+
+	<div class="login-page">
+		<a href="/register" id="register" style="display: none;">회원가입</a>
+		<a href="/login" id="login" style="display: none;">로그인</a>
+		<button id="logoutBtn"style="display: none;">로그아웃</button>
+		<a href="/mypage" id="mypage"style="display: none;">마이페이지</a>
 	</div>
 		
 </br>

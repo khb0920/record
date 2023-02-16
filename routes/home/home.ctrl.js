@@ -12,6 +12,9 @@ const output = {
     home : (req, res) => {
         res.render("index.html");
     },
+    header : (req, res) => {
+        res.render("header.html");
+    },
 
     login : (req, res) => {
         res.render("login.html");
@@ -40,6 +43,9 @@ const output = {
     },
     writing : async(req, res) => {
         res.render("writing.html");
+    },
+    updateContentspage : async(req, res) => {
+        res.render("updateContentspage.html");
     },
 };
 
@@ -194,6 +200,13 @@ const ps = {
        return res.json(boardData);
     },
 
+    boardDetail : async (req, res) => {
+        const userId = req.decoded.id;
+        const boardId = req.params.id;
+        const boardData = await BoardStorage.getBoardDetailInfo(boardId);
+        return res.json({boardData, userId});
+    },
+
     writing : async (req, res) => {
         if(typeof req.file=="undefined"){
             var image = null;
@@ -203,6 +216,19 @@ const ps = {
         const userId = req.decoded.id;
         const boardInfo = [req.body.title,req.body.contents, image, userId];
         const response = await BoardStorage.saveBoardInfo(boardInfo);
+        return res.json(response);
+        
+    },
+
+    writing : async (req, res) => {
+        if(typeof req.file=="undefined"){
+            var image = null;
+        }else{
+            var image = "/image/" + req.file.filename;
+        }
+        const userId = req.decoded.id;
+        const boardInfo = [req.body.title,req.body.contents, image, userId, req.body.Num];
+        const response = await BoardStorage.updateBoardInfo(boardInfo);
         return res.json(response);
         
     },

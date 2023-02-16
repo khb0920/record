@@ -12,14 +12,15 @@ fetch("/board/index", {
             var newCell1 = newRow.insertCell();
             var newCell2 = newRow.insertCell();
             var newCell3 = newRow.insertCell();
-            newCell1.innerHTML = `<a href='#'>${boardData.boardTitle}</a>`;
+            newCell1.innerHTML = `<a href='/board/detailpage/${boardData.boardNum}'>${boardData.boardTitle}</a>`;
             newCell2.innerText =boardData.boardUser;
             newCell3.innerText =boardData.boardTime;
         }
     document.write ="</tr>";
     }
-   
-});
+}) .catch((err) => {
+    console.error(err);
+}); 
 
 
 
