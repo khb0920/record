@@ -19,6 +19,7 @@ const router = express.Router();
 
 router.get("/", ctrl.output.home);
 router.get("/header", ctrl.output.header);
+router.get("/footer", ctrl.output.footer);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/mypage", isLoggedIn, ctrl.output.mypage);

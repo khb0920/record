@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const UserStorage = require("../../models/UserStorage");
 const RecordStorage = require("../../models/RecordStorage");
 const MatchStorage = require("../../models/MatchStorage");
-const express = require('express');
 const crypto = require('crypto');
 const BoardStorage = require("../../models/BoardStorage");
 
@@ -15,7 +14,9 @@ const output = {
     header : (req, res) => {
         res.render("header.html");
     },
-
+    footer : (req, res) => {
+        res.render("footer.html");
+    },
     login : (req, res) => {
         res.render("login.html");
     },

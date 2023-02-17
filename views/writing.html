@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/js/writing.js" defer></script>
+    <script src="/js/includeHTML.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body style="margin: 0;">
+
+  <div include-html="/header">
+		<script>includeHTML();</script>
+	</div>
+
       <div id="write_page">
           <h4>글을 작성하는 공간입니다.</h4>
               <div id="write_area">
@@ -24,6 +30,10 @@
                       </div>
                   </form>
               </div>
+          </div>
+
+          <div include-html="/footer">
+            <script>includeHTML();</script>
           </div>
       </body>
 </html>

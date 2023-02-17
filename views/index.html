@@ -10,78 +10,93 @@
 	<title>Document</title>
 </head>
 <body>
-	<div class="header">
-	<div include-html="/header" ><script>includeHTML();</script></div>
-	<hr/>
+	<div include-html="/header">
+		<script>includeHTML();</script>
 	</div>
-
+	
 	<div class="login-page">
 		<a href="/register" id="register" style="display: none;">회원가입</a>
 		<a href="/login" id="login" style="display: none;">로그인</a>
-		<button id="logoutBtn"style="display: none;">로그아웃</button>
+		<button type="button" id="logoutBtn" style="display: none;">로그아웃</button>
 		<a href="/mypage" id="mypage"style="display: none;">마이페이지</a>
 	</div>
-		
-</br>
-</br>
-</br>
-<div style="float: right;  margin-left: 100px; margin-right: 300px; margin-bottom: 100px;">
-	<h3>새로운 회원</h3>
-	<table class="newuser-table">
-		<tr>
-			<td id="id1"></td>
-			<td id="age1"></td>
-			<td id="pos1"></td>
-		</tr>
-		<tr>
-			<td id="id2"></td>
-			<td id="age2"></td>
-			<td id="pos2"></td>
-		</tr>
-		<tr>
-			<td id="id3"></td>
-			<td id="age3"></td>
-			<td id="pos3"></td>
-		</tr>
+	
+	<div class="newUser">
+		<h3>새로운 회원</h3>
+		<marquee direction=up>
+			<table class="newuser-table">
+				<tr>
+					<td id="id1"></td>
+					<td id="age1"></td>
+					<td id="pos1"></td>
+				</tr>
+				<tr>
+					<td id="id2"></td>
+					<td id="age2"></td>
+					<td id="pos2"></td>
+				</tr>
+				<tr>
+					<td id="id3"></td>
+					<td id="age3"></td>
+					<td id="pos3"></td>
+				</tr>
+			</table>
+		</marquee>
+	</div>
 
-	</table>
-</div>
-	<div class="record" style="float: center; margin-bottom: 200px;">
-	<div id="goal" style="width:200px; height:150px;  float:left; margin-right:20px;">
-		<h3>이달의 득점왕</h3>
-		<img id="gimg1" style="width:200px; height:150px;"></br>
-		<text id="g1st"></text>
+	<div>
+		<img id ="top_img" src="/img/header_soccer.jpg"/>
 	</div>
-	<div id ="assist"style="width:200px; height:150px;  float:left;margin-right:20px;">
-		<h3>이달의 도움왕</h3>
-		<img id="asimg1" style="width:200px; height:150px;"></br>
-		<text id="as1st"></text>
-	</div>	
-	<div style="width:200px; height:150px; float:left; margin-right:20px;">
-		<h3>이달의 최다 mvp 수상</h3>
-		<img id="mimg1" style=" width:200px; height:150px;"></br>
-		<text id="m1st"></text>
+
+	<div class="index_rank">
+		<h2>HOT RANK🔥</h2>
 	</div>
-	<div style="width:200px; height:150px; float:left;">
-		<h3>이달의 중요 세이브</h3>
-		<img id="simg1" style=" width:200px; height:150px;"></br>
-		<text id="s1st"></text>
+	<div class="record">
+		<div class="goal">
+			<h3>득점왕</h3>
+			<img id="gimg1"/>
+			<text id="g1st"></text>
+		</div>
+		<div class ="assist">
+			<h3>도움왕</h3>
+			<img id="asimg1"></br>
+			<text id="as1st"></text>
+		</div>	
+		<div class="mvp">
+			<h3>최다 mvp</h3>
+			<img id="mimg1"></br>
+			<text id="m1st"></text>
+		</div>
+		<div class="save" >
+			<h3>중요 세이브</h3>
+			<img id="simg1"></br>
+			<text id="s1st"></text>
+		</div>
 	</div>
-</div>
-</br>
-</br>
-</br>
-<hr/>
-	<div class="weekMatch" style="float: center; margin-top: 50px;">
-		<h3>이번주 경기</h3>
-		<text id="match1"  style="margin-right: 50px;"></text>
-		<text id="dday"></text>
+
+
+	<div class="index_Next">
+		<h2>NEXT MATCH⚽</h2>
 	</div>
-</br>
-<hr/>
-	<div class="lastMatch" style="float: center; margin-top: 50px; margin-bottom: 50px;">
-		<h3>최근 경기 결과</h3>
-		<text id="match2"></text>
+		<div class="weekMatch">
+			<div id="match1"></div>
+			</br>
+			<div id="dday"></div>
+		</div>
+
+	<div class="index_last">
+		<h2>last MATCH⚽</h2>
+	</div>
+		<div class="lastMatch">
+			<div>
+			<img src="/img/noimg.png">
+			<text>MVP</text>
+			</div>	
+			<div id="match2"></div>
+		</div>
+
+	<div include-html="/footer">
+		<script>includeHTML();</script>
 	</div>
 </body>
 </html>

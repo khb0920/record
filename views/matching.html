@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/js/matching.js" defer></script>
+    <script src="/js/includeHTML.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body style="margin: 0;">
+    <div include-html="/header">
+		<script>includeHTML();</script>
+	</div>
+
     <div>
     <div>
         <select id="month">
@@ -55,6 +60,10 @@
             <td>결과</td>
         </tr>
     </table>
+</div>
+
+<div include-html="/footer">
+    <script>includeHTML();</script>
 </div>
 </body>
 </html>

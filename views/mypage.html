@@ -5,9 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="/js/mypage.js" defer></script>
+	<script src="/js/includeHTML.js"></script>
 	<title>Document</title>
 </head>
-<body>
+<body style="margin: 0;">
+	<div include-html="/header">
+		<script>includeHTML();</script>
+	</div>
+
 	<div><H1>마이페이지 입니다.</H1></div></br>
 	<div>
 		<div style="width:200px;"><img id ="myImg" style="width:200px;"></div>
@@ -26,5 +31,9 @@
 		<div id ="mySave" style="border: 1px;  float: left; width: 20%;"></div>
 		<div id ="myPartici" style="border: 1px;  float: left; width: 20%;"></div>
 	</fieldset>
+
+	<div include-html="/footer">
+		<script>includeHTML();</script>
+	</div>
 </body>
 </html>

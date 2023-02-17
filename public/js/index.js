@@ -2,6 +2,8 @@
 const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", logOut);
 const userLogin = localStorage.accessToken;
+
+
 if(!userLogin){
     document.getElementById("login").style.display="";
     document.getElementById("register").style.display="";
@@ -44,7 +46,7 @@ fetch('/record/goal', {
 .then((res) => res.json())
 .then((data) => {
        var grecord = data;
-       document.getElementById("g1st").innerHTML = `${grecord[0].userName}님 ${grecord[0].userGoal} 득점`;
+       document.getElementById("g1st").innerHTML = `${grecord[0].userName}님 ${grecord[0].userGoal}득점`;
        document.getElementById("gimg1").src = grecord[0].userImg;
 })
 .catch((err) => {
@@ -60,7 +62,7 @@ fetch("/record/assist", {
 .then((res) => res.json())
 .then((data) => {
        var asrecord = data;
-       document.getElementById("as1st").innerHTML = `${asrecord[0].userName}님 ${asrecord[0].userAssist} 도움`;
+       document.getElementById("as1st").innerHTML = `${asrecord[0].userName}님 ${asrecord[0].userAssist}도움`;
        document.getElementById("asimg1").src = asrecord[0].userImg;  
 })
 .catch((err) => {
@@ -76,7 +78,7 @@ fetch("/record/mvp", {
 .then((res) => res.json())
 .then((data) => {
        var mrecord = data;
-       document.getElementById("m1st").innerHTML = `${mrecord[0].userName}님 ${mrecord[0].userMvp} 회 수상`;
+       document.getElementById("m1st").innerHTML = `${mrecord[0].userName}님 ${mrecord[0].userMvp}회`;
        document.getElementById("mimg1").src = mrecord[0].userImg;
 })
 .catch((err) => {
@@ -92,7 +94,7 @@ fetch("/record/save", {
 .then((res) => res.json())
 .then((data) => {
        var srecord = data;
-       document.getElementById("s1st").innerHTML = `${srecord[0].userName}님 ${srecord[0].userSave} 선방`;
+       document.getElementById("s1st").innerHTML = `${srecord[0].userName}님 ${srecord[0].userSave}선방`;
        document.getElementById("simg1").src = srecord[0].userImg;
 })
 .catch((err) => {
@@ -108,7 +110,7 @@ fetch("/match/week", {
 .then((res) => res.json())
 .then((data) => {
     var wmatch = data;
-    document.getElementById("match1").innerHTML = `${wmatch.matchMonth} 월 ${wmatch.matchDay} 일 ${wmatch.matchPlace}  VS  ${wmatch.matchVs}`;
+    document.getElementById("match1").innerHTML = `${wmatch.matchMonth} 월 ${wmatch.matchDay} 일 </br></br> VS ${wmatch.matchVs} </br></br> 장소: ${wmatch.matchPlace} `;
     function diffDay(){
     const dday = document.querySelector("#dday");   
     const dtime = new Date(`${wmatch.matchYear}-${wmatch.matchMonth}-${wmatch.matchDay}`);
@@ -120,7 +122,7 @@ fetch("/match/week", {
     const diffMin = Math.floor((diff/(1000*60))%60);
     const diffSec = Math.floor(diff/1000%60);   
 
-    dday.innerHTML = `${diffDay}일${diffHour}시간 ${diffMin}분 ${diffSec}초`;
+    dday.innerHTML = `${diffDay} 일 ${diffHour} 시간 ${diffMin} 분 ${diffSec} 초`;
     }
     diffDay();
     setInterval(diffDay, 1000);
@@ -157,8 +159,8 @@ fetch("/user", {
      document.getElementById("id2").innerHTML = `${newUser[1].userId}님`;
      document.getElementById("id3").innerHTML = `${newUser[2].userId}님`;
      document.getElementById("age1").innerHTML = `${newUser[0].userAge}세`;
-     document.getElementById("age2").innerHTML = `${newUser[1].userAge}`;
-     document.getElementById("age3").innerHTML = `${newUser[2].userAge}`;
+     document.getElementById("age2").innerHTML = `${newUser[1].userAge}세`;
+     document.getElementById("age3").innerHTML = `${newUser[2].userAge}세`;
      document.getElementById("pos1").innerHTML = `${newUser[0].userPos}`;
      document.getElementById("pos2").innerHTML = `${newUser[1].userPos}`;
      document.getElementById("pos3").innerHTML = `${newUser[2].userPos}`;
