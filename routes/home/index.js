@@ -20,6 +20,7 @@ const router = express.Router();
 router.get("/", ctrl.output.home);
 router.get("/header", ctrl.output.header);
 router.get("/footer", ctrl.output.footer);
+router.get("/adminPage", isLoggedIn, ctrl.output.useradmin);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/mypage", isLoggedIn, ctrl.output.mypage);
@@ -45,6 +46,7 @@ router.get("/match", ctrl.ps.match);
 router.get("/match/last", ctrl.ps.lastmatch);
 router.get("/match/week", ctrl.ps.weekMatch);
 router.get("/match/month/:id", ctrl.ps.monthMatch);
+router.get("/matchMvp", ctrl.ps.matchMvp);
 router.get("/board/index", isLoggedIn, ctrl.ps.board);
 router.get("/board/detail/:id", isLoggedIn, ctrl.ps.boardDetail);
 
@@ -54,7 +56,9 @@ router.post("/login", ctrl.ps.login);
 router.post("/register", upload.single("img"), ctrl.ps.register);
 router.post("/logout", isLoggedIn, ctrl.ps.logout);
 router.post("/board/writing", upload.single("img"), isLoggedIn, ctrl.ps.writing);
-router.post("/board/updateContents", upload.single("img"), isLoggedIn, ctrl.ps.writing);
+router.post("/board/updateContents", upload.single("img"), isLoggedIn, ctrl.ps.updateBoard);
+router.post("/match/register", isLoggedIn, ctrl.ps.registerMatch);
+router.post("/match/result", isLoggedIn, ctrl.ps.resultMatch);
 
 router.put("/update/img", upload.single("img"), isLoggedIn, ctrl.ps.updateImg);
 

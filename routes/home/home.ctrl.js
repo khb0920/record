@@ -5,6 +5,8 @@ const RecordStorage = require("../../models/RecordStorage");
 const MatchStorage = require("../../models/MatchStorage");
 const crypto = require('crypto');
 const BoardStorage = require("../../models/BoardStorage");
+const express = require('express');
+
 
 
 const output = {
@@ -19,6 +21,14 @@ const output = {
     },
     login : (req, res) => {
         res.render("login.html");
+    },
+
+    useradmin : async (req, res) => {
+        if(req.decoded.id === "khb0920"){
+            res.render("adminPage.html");
+        }else{
+            res.send("<script>alert('접근권한이 없습니다.');location.href='/';</script>");
+        }
     },
     
     register : (req, res) => {
@@ -110,6 +120,8 @@ const ps = {
         const userData = await UserStorage.getUserInfo(req.decoded.id);
         return res.json(userData);
     },
+
+    
     
     logout : async (req, res) => {
         const accessToken = req.cookies['accessToken'];
@@ -135,7 +147,6 @@ const ps = {
     recordDetail : async (req, res) => {
         
         const recordData = await RecordStorage.recordDetail(req.params.id);
-        //console.log(recordData);
         return res.json(recordData);
     },
 
@@ -188,6 +199,23 @@ const ps = {
         return res.json(matchData);
     },
 
+    matchMvp : async (req, res) => {
+        const lastmatch = await MatchStorage.getlastMatchInfo();
+        let last = lastmatch[lastmatch.length - 1];
+        const matchMvp = await MatchStorage.getMatchMvpInfo(last.matchMvp);
+        return res.json(matchMvp);
+    },
+
+    registerMatch : async (req, res) => {
+        const response = await MatchStorage.saveMatchInfo(req.body);
+        return res.json(response);
+    },
+
+    resultMatch : async (req, res) => {
+        const response = await MatchStorage.saveResultInfo(req.body);
+        return res.json(response);
+    },
+
     updateImg : async (req, res) => {
         const image = "/image/" + req.file.filename;
         const userId = req.decoded.id;
@@ -215,13 +243,13 @@ const ps = {
             var image = "/image/" + req.file.filename;
         }
         const userId = req.decoded.id;
-        const boardInfo = [req.body.title,req.body.contents, image, userId];
+        const boardInfo = [req.body.title, req.body.contents, image, userId];
         const response = await BoardStorage.saveBoardInfo(boardInfo);
         return res.json(response);
         
     },
 
-    writing : async (req, res) => {
+    updateBoard : async (req, res) => {
         if(typeof req.file=="undefined"){
             var image = null;
         }else{

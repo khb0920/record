@@ -11,8 +11,6 @@ function register() {
     const position = document.getElementById('position').value;
     const img = document.getElementById('img').files[0];
 
-    
-
     if (psword !== confirmPsword)  return alert("비밀번호가 일치하지 않습니다.");
     if (!id) return alert("아이디를 입력해주십시오.");
     if (!name) return alert("이름을 입력해주십시오.");

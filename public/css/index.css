@@ -337,3 +337,15 @@ body {
   width: 30%;
   height: 200px;
 }
+
+.lastMatch > #matchMvp{
+  width: 200px;
+}
+
+.lastMatch > #MvpName{
+  font-family: helvetica, arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 250px;
+  margin-left: 30px;
+}

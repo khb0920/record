@@ -168,3 +168,19 @@ fetch("/user", {
 .catch((err) => {
     console.log(err);
 });
+
+fetch("/matchMvp", {
+    method : "GET",
+    headers: {
+        "Content-Type": "application/json",    
+    },
+})
+.then((res) => res.json())
+.then((data) => {
+    const lastmatchMVP = data;
+    document.getElementById("MvpName").innerHTML =`MVP ${lastmatchMVP.userName}님🎉`;
+    document.getElementById("matchMvp").src =`${lastmatchMVP.userImg}`;
+})
+.catch((err) => {
+    console.log(err);
+});

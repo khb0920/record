@@ -1,6 +1,6 @@
 document.getElementById("writeBtn").addEventListener("click", writing);
 
-function writing(){
+function writing() {
 
         const title = document.getElementById('title').value;
         const contents = document.getElementById('contents').value;
@@ -19,6 +19,7 @@ function writing(){
         formData.append('title', title);
         formData.append('contents', contents);
         formData.append('img', img);
+
         fetch("/board/writing", {
             method: "POST",
             body: formData,
@@ -30,7 +31,6 @@ function writing(){
                 location.href ="/board";
             } else {
                 alert(res.msg);
-    
             }
         })
         .catch((err) => {

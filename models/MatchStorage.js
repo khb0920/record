@@ -40,6 +40,40 @@ class MatchStorage {
         });
         });
     }
+
+    static getMatchMvpInfo(id) {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT * FROM user where userName = ?;";
+        db.query(query, [id], (err, data) => {
+            if (err) reject(`${err}`);
+            resolve(data[0]);
+        });
+        });
+    }
+
+    static saveMatchInfo(matchInfo) {
+        return new Promise((resolve, reject) => {
+            const query = "INSERT INTO `match`(matchYear, matchMonth, matchDay, matchPlace, matchVs) VALUES(?, ?, ?, ?, ?);";
+        db.query(query, 
+                [matchInfo.year, matchInfo.month, matchInfo.day, matchInfo.place, matchInfo.vs], 
+                (err, data) => {
+                if (err) reject(`${err}`);
+                resolve({success: true});
+        });
+        });
+    }
+
+    static saveResultInfo(matchRecord) {
+        return new Promise((resolve, reject) => {
+            const query = "update `match` set matchScore=?, matchLoss=?, matchResult=? matchMvp=? where matchYear = ? and matchMonth = ? and matchDay = ?;";
+        db.query(query, 
+                [matchRecord.score, matchRecord.loss, matchRecord.result, matchRecord.rmvp, matchRecord.ryear, matchRecord.rmonth, matchRecord.rday], 
+                (err, data) => {
+                if (err) reject(`${err}`);
+                resolve({success: true});
+        });
+        });
+    }
 }
 
 module.exports = MatchStorage;

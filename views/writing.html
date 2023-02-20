@@ -14,23 +14,21 @@
 		<script>includeHTML();</script>
 	</div>
 
-      <div id="write_page">
-          <h4>글을 작성하는 공간입니다.</h4>
-              <div id="write_area">
-                  <form id="write_form" enctype="multipart/form-data">
-                      <div class="write_page">
-                        <textarea name="title" id="title" rows="1" cols="55" placeholder="제목" maxlength="100"></textarea>
-                      </div>
-                      <div class="write_page">
-                        <textarea name="contents" id="contents" placeholder="내용"></textarea>
-                      </div>
-                        <input id="img" type="file" name="img" accept="image/*" />
-                      <div class="write_page">
-                        <p id="writeBtn">글 작성</p>
-                      </div>
-                  </form>
+      <div class="write_page">
+        <h4>글을 작성하는 공간입니다.</h4>
+          <form id="write_form" enctype="multipart/form-data">
+              <div class="write_form">
+                <textarea name="title" id="title" rows="1" cols="55" placeholder="제목" maxlength="100"></textarea>
               </div>
-          </div>
+              <div class="write_form">
+                <textarea name="contents" id="contents" placeholder="내용"></textarea>
+              </div>
+              <div class="write_form">
+                <input id="img" type="file" name="img" accept="image/*" />
+              </div>
+                <p id="writeBtn">글 작성</p>
+          </form>
+      </div>
 
           <div include-html="/footer">
             <script>includeHTML();</script>
