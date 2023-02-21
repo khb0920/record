@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/js/adminPage.js" defer></script>
+    <script src="/js/includeHTML.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="registerMatch">
+<body style="margin: 0;">
+    <div include-html="/header">
+		<script>includeHTML();</script>
+	</div>
+
+    <div class="registerMatch" style="margin-left: 15%; float: left; margin-top: 10%;">
         <h2>경기 등록하기</h2>
             <div class="register-form">
             <label>년도</label><input id="year" name="year" type="text" />
@@ -32,7 +37,7 @@
             <p id="registerMatchBtn">등록하기</p>
     </div>
 
-    <div class="resultMatch">
+    <div class="resultMatch" style="margin-left: 100px; float: left;margin-top: 10%;">
         <h2>경기 결과 등록하기</h2>
             <div class="result-form">
             <label>년</label><input id="ryear" name="ryear" type="text" />
@@ -59,29 +64,39 @@
             <div class="result-form">
             <label>결과</label><input id="rmvp" name="rmvp" type="text" />
             </div>
-
-            
             <p id="resultMatchBtn">등록하기</p>
     </div>
 
-    <!-- <div class="result-form">
-        <label>득점(이름,이름,이름, ...)</label><input id="goal" name="place" type="text" />
+    <div class="record-user" style="margin-left: 100px; float: left;margin-top: 10%; ">
+        <h2>회원 기록 등록하기</h2>
+        <div class="record-form">
+        <label>회원이름</label><input id="username" name="username" type="text" />
         </div>
 
-        <div class="result-form">
-        <label>도움(이름,이름,이름, ...)</label><input id="assist" name="assist" type="text" />
+        <div class="record-form">
+        <label>득점</label><input id="goal" name="place" type="text" />
         </div>
 
-        <div class="result-form">
-        <label>MVP(이름,이름,이름, ...)</label><input id="mvp" name="mvp" type="text" />
+        <div class="record-form">
+        <label>도움</label><input id="assist" name="assist" type="text" />
         </div>
 
-        <div class="result-form">
-        <label>세이브(이름,이름,이름, ...)</label><input id="save" name="save" type="text" />
+        <div class="record-form">
+        <label>mvp</label><input id="mvp" name="mvp" type="text" />
         </div>
 
-        <div class="result-form">
-        <label>참여(이름,이름,이름, ...)</label><input id="partici" name="partici" type="text" />
-        </div> -->
+        <div class="record-form">
+        <label>세이브</label><input id="save" name="save" type="text" />
+        </div>
+
+        <div class="record-form">
+        <label>참여</label><input id="partici" name="partici" type="text" />
+        </div>
+        <p id="recorduserBtn">등록하기</p>
+    </div>
+
+    <div include-html="/footer" style="margin-top: 50%;">
+        <script>includeHTML();</script>
+    </div>
 </body>
 </html>

@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+.select-page{
+    padding: 1%;
+}
+
+.select-page > select{
+    width: 150px; 
+    padding: .8em .5em; 
+    border: 1px solid #999;
+    font-family: inherit;  
+    border-radius: 0px; 
+}
+
+.selectMonth{
+    margin-left: 100px;
+}
+
+.selectMonth > button{
+   width: 50px;
+}
+
+.detail-table{
+    margin-left: 5%;
+}
+.search-table{
+    margin-left: 5%;
+}
+
+
+

@@ -72,6 +72,17 @@ class RecordStorage {
         });
         });
     }
+    static saveRecordInfo(recordInfo) {
+        return new Promise((resolve, reject) => {
+                const query ="UPDATE record SET userGoal = userGoal + ?, userAssist = userAssist + ?, userMvp = userMvp + ?, userSave = userSave + ?, userPartici = userPartici + ? WHERE userName = ?;";
+            db.query(query,
+                [recordInfo.goal, recordInfo.assist, recordInfo.mvp, recordInfo.save, recordInfo.partici, recordInfo.username],
+                (err, data) => {
+            if (err) reject(`${err}`);
+            resolve({success: true});
+        });
+        });
+    }
 }
 
 

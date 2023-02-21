@@ -92,3 +92,51 @@ function resultMatch() {
         console.error("매치결과등록 중 에러 발생");
     }); 
 };
+
+document.getElementById("recorduserBtn").addEventListener("click", recordUser);
+
+function recordUser() {
+
+    const username = document.getElementById('username').value;
+    var goal = document.getElementById('goal').value;
+    var assist = document.getElementById('assist').value;
+    var mvp = document.getElementById('mvp').value;
+    var save = document.getElementById('save').value;
+    var partici = document.getElementById('partici').value;
+    
+
+    if (!username) return alert("회웡이름을 입력해주십시오.");
+    if (!goal) var goal = '0';
+    if (!assist) var assist ='0';
+    if (!mvp) var mvp = '0';
+    if (!save) var save ='0';
+    if (!partici) var partici ='0';
+    
+    fetch("/match/record", {
+        method: "POST",
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+            username:username,
+            goal:goal,
+            assist:assist,
+            mvp:mvp,
+            save:save,
+            partici:partici,
+        })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+           if(res.success){
+            alert("매치기록 등록 완료");
+            location.href ="/adminPage";
+        } else {
+            alert(res.msg);
+        }
+        console.log(res);
+    })
+    .catch((err) => {
+        console.error("매치기록등록 중 에러 발생");
+    }); 
+};

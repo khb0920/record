@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body style="margin: 0;">
+
     <div include-html="/header">
 		<script>includeHTML();</script>
 	</div>
@@ -16,23 +17,27 @@
 
     <h1></h1>
  
-    <table border="3" style="width: 70%; height: 500px;">
+    <table border="3" style="width: 80%; height: 500px; margin-left: 10%;">
         <tr>
-            <td id="name">작성자</td>
+            <td id="name"></td>
         </tr>
         <tr>
             <td id="title">제목</td>
         </tr>
         <tr>
-            <td id="contents">내용</td>
-            <img id="img" style="width: 100px;">
+            <td id="contents"></td>
+        </tr>
+        <tr>
+            <td>
+                <img id="img" style="width: 10%;">
+            </td>
         </tr>
         <tr>
             <td id="time">등록일</td>
         </tr>
         <tr>
-            <td colspan="2">
-                <p id="updateBtn">글 수정</p>
+            <td>
+                <button id="updateBtn">글 수정</button></br></br>
                 <a href="/board">목록</a>
             </td>
         </tr>

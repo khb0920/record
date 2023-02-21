@@ -59,6 +59,7 @@ router.post("/board/writing", upload.single("img"), isLoggedIn, ctrl.ps.writing)
 router.post("/board/updateContents", upload.single("img"), isLoggedIn, ctrl.ps.updateBoard);
 router.post("/match/register", isLoggedIn, ctrl.ps.registerMatch);
 router.post("/match/result", isLoggedIn, ctrl.ps.resultMatch);
+router.post("/match/record", isLoggedIn, ctrl.ps.recordMatch);
 
 router.put("/update/img", upload.single("img"), isLoggedIn, ctrl.ps.updateImg);
 

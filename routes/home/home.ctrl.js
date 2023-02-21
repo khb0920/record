@@ -216,6 +216,11 @@ const ps = {
         return res.json(response);
     },
 
+    recordMatch : async (req, res) => {
+        const response = await RecordStorage.saveRecordInfo(req.body);
+        return res.json(response);
+    },
+
     updateImg : async (req, res) => {
         const image = "/image/" + req.file.filename;
         const userId = req.decoded.id;

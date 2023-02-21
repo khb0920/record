@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/matching.css">
     <script src="/js/matching.js" defer></script>
     <script src="/js/includeHTML.js"></script>
     <title>Document</title>
 </head>
-<body style="margin: 0;">
+<body>
     <div include-html="/header">
 		<script>includeHTML();</script>
 	</div>
 
-    <div>
-    <div>
+    <div class="select-page">
         <select id="month">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -29,13 +29,18 @@
             <option value="11">11</option>
             <option value="12">12</option>
         </select>
-        <label>월</label>
+        <label>월📅</label>
     </div>
-    <button id="search" style="float: left;">검색</button>
-    <button id="reset" style="float: left;">삭제</button>
-</div>
-    <div>
-        <table id="sdata"  width = "80%" border="5" style='margin-top: 10%; text-align: center; visibility: hidden;'>
+
+    <div class="selectMonth">
+        <button id="search">검색</button>
+        <button id="reset">삭제</button>
+    </div>
+
+
+    <div class="detail-table">
+        <h2>선택한 경기</h2>
+        <table id="sdata" width = "90%" border="5" style='margin-top: 5%; margin-bottom:5%; text-align: center; visibility: hidden;'>
             <tr>
                 <td>년도</td>
                 <td>월</td>
@@ -48,22 +53,27 @@
             </tr>
         </table>      
     </div>
-    <div><table id="mdata" width = "80%" border="5" style='margin-top: 10%; text-align: center'>
-        <tr>
-            <td>년도</td>
-            <td>월</td>
-            <td>일</td>
-            <td>구장</td>
-            <td>상대팀</td>
-            <td>득점</td>
-            <td>실점</td>
-            <td>결과</td>
-        </tr>
-    </table>
-</div>
+    <hr/>
+
+    <div class="search-table">
+        <h2>전체 경기</h2>
+        <table id="mdata" width = "90%" border="5" style='margin-top: 5%; text-align: center'>
+            <tr>
+                <td>년도</td>
+                <td>월</td>
+                <td>일</td>
+                <td>구장</td>
+                <td>상대팀</td>
+                <td>득점</td>
+                <td>실점</td>
+                <td>결과</td>
+            </tr>
+        </table>
+    </div>
 
 <div include-html="/footer">
     <script>includeHTML();</script>
 </div>
+
 </body>
 </html>
