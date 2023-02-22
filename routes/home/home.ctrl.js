@@ -5,6 +5,7 @@ const RecordStorage = require("../../models/RecordStorage");
 const MatchStorage = require("../../models/MatchStorage");
 const crypto = require('crypto');
 const BoardStorage = require("../../models/BoardStorage");
+const CommentStorage = require("../../models/CommentStorage");
 const express = require('express');
 
 
@@ -101,7 +102,7 @@ const ps = {
     },
 
     register : async (req, res) => {
-        const image = "/image/" + req.file.filename;
+        const image = req.file.key;
         const hashpsword = crypto.createHash('sha512')
                 .update(req.body.psword)
                 .digest('base64');
@@ -222,7 +223,7 @@ const ps = {
     },
 
     updateImg : async (req, res) => {
-        const image = "/image/" + req.file.filename;
+        const image = req.file.key;
         const userId = req.decoded.id;
         const userInfo = [userId, image];
         const changed = await UserStorage.updateUser(userInfo);
@@ -238,14 +239,22 @@ const ps = {
         const userId = req.decoded.id;
         const boardId = req.params.id;
         const boardData = await BoardStorage.getBoardDetailInfo(boardId);
-        return res.json({boardData, userId});
+        const commentData = await CommentStorage.getCommentInfo(boardId);
+        return res.json({boardData, userId, commentData});
+    },
+
+    writeComment : async (req, res) => {
+        
+        const commentData = [req.body.comment, req.decoded.id, req.body.boardNum];
+        const response = await CommentStorage.saveCommentInfo(commentData);
+        return res.json(response);
     },
 
     writing : async (req, res) => {
         if(typeof req.file=="undefined"){
             var image = null;
         }else{
-            var image = "/image/" + req.file.filename;
+            var image = req.file.key;
         }
         const userId = req.decoded.id;
         const boardInfo = [req.body.title, req.body.contents, image, userId];
@@ -258,8 +267,9 @@ const ps = {
         if(typeof req.file=="undefined"){
             var image = null;
         }else{
-            var image = "/image/" + req.file.filename;
+            var image = req.file.key;
         }
+        console.log(req.file);
         const userId = req.decoded.id;
         const boardInfo = [req.body.title,req.body.contents, image, userId, req.body.Num];
         const response = await BoardStorage.updateBoardInfo(boardInfo);

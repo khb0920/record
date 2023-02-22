@@ -1,11 +1,12 @@
 const mysql = require("mysql");
+require('dotenv').config();
 
 const db = mysql.createConnection({
     multipleStatemens:true,
-    host: "hddb.c0s9behzy0hl.ap-northeast-2.rds.amazonaws.com",
-    user: "hb",
-    password: "dhdltlfgdj1!",
-    database: "hbdb",
+    host: process.env.DB_HOST_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE_NAME,
 });
 
 db.connect();

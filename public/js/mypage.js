@@ -9,7 +9,8 @@ fetch("/user/me", {
     .then((res) => res.json())
     .then((data) => {
         var user = data;
-        document.getElementById("myImg").src = `${user.userImg}`;
+        document.getElementById("myImg").src = `https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${user.userImg}`;
+        document.getElementById("myname").innerHTML = `${user.userName}님 안녕하세요`;
     }).catch(function(error) {
     console.log(error);
     });
@@ -30,7 +31,6 @@ fetch("/record/me", {
     document.getElementById("myMvp").innerHTML = `${myrecord.userMvp} 회 수상`;
     document.getElementById("mySave").innerHTML = `${myrecord.userSave} 회 선방`;
     document.getElementById("myPartici").innerHTML = `${myrecord.userPartici} 회 참여`;
-    // console.log(user);
 }).catch(function(error) {
 console.log(error);
 });
@@ -48,8 +48,6 @@ function updatePage(){
 
 document.querySelector("#update").addEventListener("click", updateImg);
 function updateImg(){
-    // if (!img) return alert("프로필 사진을 선택해주세요.");
-
     const img = document.getElementById('img').files[0];
     const form = new FormData();
     form.append('img', img);

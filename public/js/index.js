@@ -47,7 +47,7 @@ fetch('/record/goal', {
 .then((data) => {
        var grecord = data;
        document.getElementById("g1st").innerHTML = `${grecord[0].userName}님 ${grecord[0].userGoal}득점`;
-       document.getElementById("gimg1").src = grecord[0].userImg;
+       document.getElementById("gimg1").src = `https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${grecord[0].userImg}`;
 })
 .catch((err) => {
     console.log(err);
@@ -63,7 +63,7 @@ fetch("/record/assist", {
 .then((data) => {
        var asrecord = data;
        document.getElementById("as1st").innerHTML = `${asrecord[0].userName}님 ${asrecord[0].userAssist}도움`;
-       document.getElementById("asimg1").src = asrecord[0].userImg;  
+       document.getElementById("asimg1").src = `https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${asrecord[0].userImg}`;  
 })
 .catch((err) => {
     console.log(err);
@@ -79,7 +79,7 @@ fetch("/record/mvp", {
 .then((data) => {
        var mrecord = data;
        document.getElementById("m1st").innerHTML = `${mrecord[0].userName}님 ${mrecord[0].userMvp}회`;
-       document.getElementById("mimg1").src = mrecord[0].userImg;
+       document.getElementById("mimg1").src = `https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${mrecord[0].userImg}`;
 })
 .catch((err) => {
     console.log(err);
@@ -95,7 +95,7 @@ fetch("/record/save", {
 .then((data) => {
        var srecord = data;
        document.getElementById("s1st").innerHTML = `${srecord[0].userName}님 ${srecord[0].userSave}선방`;
-       document.getElementById("simg1").src = srecord[0].userImg;
+       document.getElementById("simg1").src = `https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${srecord[0].userImg}`;
 })
 .catch((err) => {
     console.log(err);
@@ -179,7 +179,7 @@ fetch("/matchMvp", {
 .then((data) => {
     const lastmatchMVP = data;
     document.getElementById("MvpName").innerHTML =`MVP ${lastmatchMVP.userName}님🎉`;
-    document.getElementById("matchMvp").src =`${lastmatchMVP.userImg}`;
+    document.getElementById("matchMvp").src =`https://hbhb-bucket.s3.ap-northeast-2.amazonaws.com/${lastmatchMVP.userImg}`;
 })
 .catch((err) => {
     console.log(err);

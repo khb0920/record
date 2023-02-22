@@ -2,14 +2,21 @@ const express = require('express');
 const ctrl = require("./home.ctrl");
 const multer = require('multer');
 const {isLoggedIn} = require('./middlewares');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
+const path = require('path');
 
+AWS.config.update({
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    region: 'ap-northeast-2',
+});
 const upload = multer({
-    storage: multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, "./upload");
-        },
-        filename: function (req, file, cb) {
-            cb(null, new Date().valueOf() + "_" + file.originalname);
+    storage: multerS3({
+        s3: new AWS.S3(),
+        bucket: 'hbhb-bucket',
+        key: function (req, file, cb) {
+            cb(null, `${Date.now()}${path.basename(file.originalname)}`);
         }
     }
     ),
@@ -49,6 +56,7 @@ router.get("/match/month/:id", ctrl.ps.monthMatch);
 router.get("/matchMvp", ctrl.ps.matchMvp);
 router.get("/board/index", isLoggedIn, ctrl.ps.board);
 router.get("/board/detail/:id", isLoggedIn, ctrl.ps.boardDetail);
+// router.get("/board/comment/:id", isLoggedIn, ctrl.ps.boardComment);
 
 
 
@@ -57,6 +65,7 @@ router.post("/register", upload.single("img"), ctrl.ps.register);
 router.post("/logout", isLoggedIn, ctrl.ps.logout);
 router.post("/board/writing", upload.single("img"), isLoggedIn, ctrl.ps.writing);
 router.post("/board/updateContents", upload.single("img"), isLoggedIn, ctrl.ps.updateBoard);
+router.post("/board/comment", isLoggedIn, ctrl.ps.writeComment);
 router.post("/match/register", isLoggedIn, ctrl.ps.registerMatch);
 router.post("/match/result", isLoggedIn, ctrl.ps.resultMatch);
 router.post("/match/record", isLoggedIn, ctrl.ps.recordMatch);

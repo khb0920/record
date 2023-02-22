@@ -17,28 +17,44 @@
 
     <h1></h1>
  
-    <table border="3" style="width: 80%; height: 500px; margin-left: 10%;">
+    <table border="3"  style="width: 80%; height: 500px; margin-left: 10%;">
         <tr>
-            <td id="name"></td>
+            <td id="name" style="padding: 10px;"></td>
         </tr>
         <tr>
-            <td id="title">제목</td>
+            <td id="title" style="padding: 10px;"></td>
         </tr>
         <tr>
-            <td id="contents"></td>
+            <td id="contents" style="padding: 10px;"></td>
         </tr>
         <tr>
             <td>
-                <img id="img" style="width: 10%;">
+                <img id="img" style="width: 10%; padding: 10px;">
             </td>
         </tr>
         <tr>
-            <td id="time">등록일</td>
+            <td id="time" style="padding: 10px;"></td>
         </tr>
         <tr>
-            <td>
+            <td style="padding: 10px;">
                 <button id="updateBtn">글 수정</button></br></br>
                 <a href="/board">목록</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px;">
+                <div class="writingComment-form">
+                    <label>내용</label><input id="comment" name="comment" type="text"/><button id="writeComment">댓글 작성</button>
+                </div>
+                <hr/>
+                댓글    
+                <table border="3" id="comment-page" style="margin-top: 20px; width: 100%;">
+                <tr>
+                    <td>내용</td>
+                    <td>작성자</td>
+                    <td>작성시간</td>
+                </tr>
+                </table>
             </td>
         </tr>
     </table>
