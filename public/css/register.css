@@ -12,8 +12,8 @@ html {
     position: absolute;
     top: 60%;
     left: 50%;
-    width: 800px;
-    padding: 100px;
+    width: 50rem;
+    padding: 6.25rem;
     transform: translate(-50%, -50%);
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
@@ -22,7 +22,7 @@ html {
   }
   
   .register-page h2 {
-    margin: 200px 0 80px;
+    margin: 12.5rem 0 5rem;
     padding: 0;
     color: #fff;
     text-align: center;
@@ -37,7 +37,7 @@ html {
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -47,7 +47,7 @@ html {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px 0;
+    padding: 0.625rem 0;
     font-size: 16px;
     color: #fff;
     pointer-events: none;
@@ -78,7 +78,7 @@ html {
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 40px;
+    margin-top: 2.5rem;
     letter-spacing: 4px
   }
   

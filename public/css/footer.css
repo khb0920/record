@@ -1,54 +1,54 @@
 footer
 {
-  margin-top: 200px;
+  margin-top: 12.5rem;
   background-color:#26272b;
-  height: 300px;
+  height: 18.75rem;
   width: 100%;
   bottom: 0;
-  font-size:15px;
-  line-height:24px;
+  font-size: 0.938rem;
+  line-height: 1.5rem;
   color:#737373;
 }
 
 footer > .contents
 {
   
-  margin-left: 100px;
+  margin-left: 6.25rem;
   text-align: left;
   color:#fff;
-  font-size:10px;
+  font-size: 0.625rem;
   letter-spacing:2px
 }
 
 footer > .contents > #logo{
-  margin-top: 50px;
-  margin-left: 150px;
+  margin-top: 3.125rem;
+  margin-left: 9.375rem;
   float: left;
-  width: 150px;
+  width: 9.375rem;
 }
 
 footer > .contents > .contact{
-  margin-top: 50px;
-  margin-left: 150px;
+  margin-top: 3.125rem;
+  margin-left: 9.375rem;
   float: left;
   text-align: left;
   color:#fff;
-  font-size:10px;
+  font-size:0.625rem;
   letter-spacing:2px
 }
 
 footer > .contents > #uniform1{
-  margin-left: 150px;
-  margin-top: 50px;
+  margin-left: 9.375rem;
+  margin-top: 3.125rem;
   float: left;
-  width: 150px;
+  width: 9.375rem;
 }
 
 footer > .contents > #uniform2{
-  margin-left: 100px;
-  margin-top: 50px;
+  margin-left: 6.25rem;
+  margin-top: 3.125rem;
   float: left;
-  width: 150px;
+  width: 9.375rem;
 }
 
 

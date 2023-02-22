@@ -12,8 +12,8 @@ html {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
-    padding: 40px;
+    width: 25rem;
+    padding: 2.5rem;
     transform: translate(-50%, -50%);
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
@@ -22,7 +22,7 @@ html {
   }
   
   .login-page h2 {
-    margin: 0 0 30px;
+    margin: 0 0 1.875rem;
     padding: 0;
     color: #fff;
     text-align: center;
@@ -37,7 +37,7 @@ html {
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -47,7 +47,7 @@ html {
     position: absolute;
     top:0;
     left: 0;
-    padding: 10px 0;
+    padding: 0.625rem 0;
     font-size: 16px;
     color: #fff;
     pointer-events: none;
