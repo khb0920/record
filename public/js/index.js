@@ -12,7 +12,8 @@ if(!userLogin){
     document.getElementById("mypage").style.display="";
 }
 
-function logOut() {
+function logOut(e) {
+    e.preventDefault();
     fetch("/logout", {
         method : "POST",
         headers: {

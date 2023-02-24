@@ -1,7 +1,7 @@
 document.getElementById("writeBtn").addEventListener("click", writing);
 
-function writing() {
-
+function writing(e) {
+        e.preventDefault();
         const title = document.getElementById('title').value;
         const contents = document.getElementById('contents').value;
         var img = document.getElementById('img').files[0];

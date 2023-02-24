@@ -43,7 +43,7 @@ router.get("/updateContentspage/:id", isLoggedIn, ctrl.output.updateContentspage
 router.get("/user", ctrl.ps.user);
 router.get("/user/me",isLoggedIn, ctrl.ps.userme);
 router.get("/record",ctrl.ps.record);
-router.get("/record/detail/:id", isLoggedIn, ctrl.ps.recordDetail);
+router.get("/record/detail/:id", ctrl.ps.recordDetail);
 router.get("/record/me", isLoggedIn, ctrl.ps.myrecord);
 router.get("/record/goal", ctrl.ps.recordGoal);
 router.get("/record/assist", ctrl.ps.recordAssist);
@@ -54,7 +54,7 @@ router.get("/match/last", ctrl.ps.lastmatch);
 router.get("/match/week", ctrl.ps.weekMatch);
 router.get("/match/month/:id", ctrl.ps.monthMatch);
 router.get("/matchMvp", ctrl.ps.matchMvp);
-router.get("/board/index",ctrl.ps.board);
+router.get("/board/index", isLoggedIn, ctrl.ps.board);
 router.get("/board/detail/:id", isLoggedIn, ctrl.ps.boardDetail);
 
 

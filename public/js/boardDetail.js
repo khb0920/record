@@ -51,7 +51,8 @@ fetch(`/board/detail/${boardNum}`, {
 
 document.getElementById("writeComment").addEventListener("click", writeComment);
 
-function writeComment(){
+function writeComment(e){
+    e.preventDefault();
     const comment = document.getElementById("comment").value;
 
     if(!comment) return alert("댓글을 작성하여 주세요");

@@ -3,8 +3,8 @@ var boardNum = boardUrl[boardUrl.length-1];
 
 document.getElementById("updateBtn").addEventListener("click", updateContents);
 
-function updateContents(){
-
+function updateContents(e){
+        e.preventDefault();
         const title = document.getElementById('title').value;
         const contents = document.getElementById('contents').value;
         var img = document.getElementById('img').files[0];

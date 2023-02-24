@@ -263,7 +263,6 @@ const ps = {
         const boardInfo = [req.body.title, req.body.contents, image, userId];
         const response = await BoardStorage.saveBoardInfo(boardInfo);
         return res.json(response);
-        
     },
 
     updateBoard : async (req, res) => {

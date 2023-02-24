@@ -1,8 +1,8 @@
 
 document.getElementById('btn').addEventListener("click", register);
 
-function register() {
-
+function register(e) {
+    e.preventDefault();
     const id = document.getElementById('id').value;
     const psword = document.getElementById('psword').value;
     const confirmPsword = document.getElementById('confirm-psword').value;

@@ -47,7 +47,8 @@ function updatePage(){
 }
 
 document.querySelector("#update").addEventListener("click", updateImg);
-function updateImg(){
+function updateImg(e){
+    e.preventDefault();
     const img = document.getElementById('img').files[0];
     const form = new FormData();
     form.append('img', img);
@@ -72,8 +73,8 @@ function updateImg(){
 }
 
 document.getElementById("deleteUser").addEventListener("click", deleteUser);
-function deleteUser(){
-    
+function deleteUser(e){
+    e.preventDefault();
     fetch("/user/delete", {
         method: "POST",     
     })

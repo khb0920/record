@@ -29,7 +29,7 @@ class BoardStorage {
 
     static getBoardInfo() {
         return new Promise((resolve, reject) => {
-            const query = "select * from board;";
+            const query = "select * from board order by boardNum DESC;";
         db.query(query, (err, data) => {
             if (err) reject(`${err}`);
             resolve(data);
