@@ -122,7 +122,10 @@ const ps = {
         return res.json(userData);
     },
 
-    
+    deleteUser : async (req, res) => {
+        const response = await UserStorage.deleteUserInfo(req.decoded.id);
+        return res.json(response);
+    },
     
     logout : async (req, res) => {
         const accessToken = req.cookies['accessToken'];

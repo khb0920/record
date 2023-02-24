@@ -31,10 +31,10 @@ router.get("/adminPage", isLoggedIn, ctrl.output.useradmin);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/mypage", isLoggedIn, ctrl.output.mypage);
-router.get("/recordPage", isLoggedIn, ctrl.output.recordPage);
+router.get("/recordPage", ctrl.output.recordPage);
 router.get("/update", isLoggedIn, ctrl.output.update);
-router.get("/matching", isLoggedIn, ctrl.output.matching);
-router.get("/board", isLoggedIn, ctrl.output.board);
+router.get("/matching", ctrl.output.matching);
+router.get("/board", ctrl.output.board);
 router.get("/board/detailpage/:id", isLoggedIn, ctrl.output.boardDetail);
 router.get("/writing", isLoggedIn, ctrl.output.writing);
 router.get("/updateContentspage/:id", isLoggedIn, ctrl.output.updateContentspage);
@@ -42,7 +42,7 @@ router.get("/updateContentspage/:id", isLoggedIn, ctrl.output.updateContentspage
 
 router.get("/user", ctrl.ps.user);
 router.get("/user/me",isLoggedIn, ctrl.ps.userme);
-router.get("/record", isLoggedIn, ctrl.ps.record);
+router.get("/record",ctrl.ps.record);
 router.get("/record/detail/:id", isLoggedIn, ctrl.ps.recordDetail);
 router.get("/record/me", isLoggedIn, ctrl.ps.myrecord);
 router.get("/record/goal", ctrl.ps.recordGoal);
@@ -54,9 +54,8 @@ router.get("/match/last", ctrl.ps.lastmatch);
 router.get("/match/week", ctrl.ps.weekMatch);
 router.get("/match/month/:id", ctrl.ps.monthMatch);
 router.get("/matchMvp", ctrl.ps.matchMvp);
-router.get("/board/index", isLoggedIn, ctrl.ps.board);
+router.get("/board/index",ctrl.ps.board);
 router.get("/board/detail/:id", isLoggedIn, ctrl.ps.boardDetail);
-// router.get("/board/comment/:id", isLoggedIn, ctrl.ps.boardComment);
 
 
 
@@ -69,6 +68,7 @@ router.post("/board/comment", isLoggedIn, ctrl.ps.writeComment);
 router.post("/match/register", isLoggedIn, ctrl.ps.registerMatch);
 router.post("/match/result", isLoggedIn, ctrl.ps.resultMatch);
 router.post("/match/record", isLoggedIn, ctrl.ps.recordMatch);
+router.post("/user/delete", isLoggedIn, ctrl.ps.deleteUser);
 
 router.put("/update/img", upload.single("img"), isLoggedIn, ctrl.ps.updateImg);
 

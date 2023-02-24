@@ -71,5 +71,28 @@ function updateImg(){
     }); 
 }
 
+document.getElementById("deleteUser").addEventListener("click", deleteUser);
+function deleteUser(){
+    
+    fetch("/user/delete", {
+        method: "POST",     
+    })
+    .then((res) => res.json())
+    .then((res) => {
+           if(res.success){
+            alert("회원 탈퇴완료!");
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            location.href ='/';
+        } else {
+            alert(res.msg);
+
+        }
+    })
+    .catch((err) => {
+        console.error("탈퇴 중 에러 발생");
+    }); 
+}
+
 
 

@@ -50,6 +50,16 @@ class UserStorage {
         });
         });
     }
+
+    static deleteUserInfo(id) {
+        return new Promise((resolve, reject) => {
+            const query = `delete from user where userId = ?;`;
+        db.query(query, [id], (err) => {
+            if (err) reject(`${err}`);
+            resolve({success : true });
+        });
+        });
+    }
 }
 
 
